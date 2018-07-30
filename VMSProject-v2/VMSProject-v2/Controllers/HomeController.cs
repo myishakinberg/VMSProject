@@ -17,14 +17,14 @@ namespace VMSProject_v2.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Volunteer data tracker";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Use the information below to contact one of our Volunteer Opportunity specialists!";
 
             return View();
         }
