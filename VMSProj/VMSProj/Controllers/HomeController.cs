@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using VMSProject_v2.Models;
+using VMSProj.Models;
 
-namespace VMSProject_v2.Controllers
+namespace VMSProj.Controllers
 {
     public class HomeController : Controller
     {
@@ -14,14 +14,17 @@ namespace VMSProject_v2.Controllers
         {
             return View();
         }
-        public IActionResult AdminPageView()
+
+        public IActionResult About()
         {
+            ViewData["Message"] = "Your application description page.";
+
             return View();
         }
 
-        public IActionResult ContactView()
+        public IActionResult Contact()
         {
-            ViewData["Message"] = "Use the information below to contact one of our Volunteer Opportunity specialists!";
+            ViewData["Message"] = "Your contact page.";
 
             return View();
         }
