@@ -1,4 +1,6 @@
-﻿@{
+﻿@model VMSProjectV2.Models.LoginViewModel
+@{
+    Layout = "_Layout";
     ViewData["Title"] = "VMS Admin Login Page";
 }
 <h2>@ViewData["Title"]</h2>
@@ -14,21 +16,9 @@
     <br /><br />
     Admins please log in below!
     <br />
-    <table>
-        <tr></tr>
-        <td><strong>Email: </strong></td>
-        <td><input id="Text1" type="text" /></td>
-        </tr>
-        <br />
-        <tr><td><br /></td><td><br /></td></tr>
-        <tr>
-            <td>
-                <strong>Password:</strong>
-            </td>
-            <br />
-            <td><input id="Password1" type="password" /></td>
-        </tr>
-        <tr><td><br /></td><td><br /></td></tr>
-        <tr><td><input id="Submit1" type="submit" value="Login" /></td><td><input id="Reset1" type="reset" value="Cancel" /></td></tr>
-    </table>
+    <form asp-controller="Home" asp-action="Index" method="post">
+        Email Address:  <input asp-for="Email" /> <br />
+        Password: <input asp-for="Password" /><br />
+        <button type="submit">Register</button>
+    </form>
 </div>
