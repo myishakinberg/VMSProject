@@ -1,6 +1,6 @@
 using System;
 
-namespace VMSProject_v2.Models
+namespace VMSProjectV2.Models
 {
     public class ErrorViewModel
     {

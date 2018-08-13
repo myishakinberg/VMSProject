@@ -1,21 +1,14 @@
-﻿@model VMSProjectV2.Models.AdminPageViewModel
+﻿@model VMSProjectV2.Models.AdminViewModel
 @{
     Layout = "_Layout";
     ViewData["Title"] = "VMS Data";
 }
-@{
-    //var db = Database.Open("VMS");
-    //var query = "SELECT * FROM Product";
-}
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<h1>Volunteer Management System</h1>
-<table border="1">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Skills</th>
-        <th>Volunteer Opportunity</th>
-    </tr>
-</table>
+<div class="container">
+    <div class="col-lg-4">
+        <a asp-controller="Home" asp-action="ManageVolunteersView">Manage Volunteers</a>
+    </div>   
+    <div class="col-lg-4">
+        <a asp-controller="Home" asp-action="ManageOpportunitiesView">Manage Opportunities</a>
+    </div>
+</div>
