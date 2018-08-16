@@ -11,7 +11,7 @@
 <h3>@ViewData["Message"]</h3>
 
 <h1>Volunteer Management System</h1>
-<div class="container">
+<div class="container" onload="myFunction()">
     <div class="col-sm-4">
         <table class="table table-bordered">
             <tr>
@@ -39,18 +39,12 @@
     <div class="col-md-8">
         <table id="manageVolunteersTable"class="table table-bordered">
             <tr>
-                <th>Id</th>
-                <th>Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
                 <th>Skills</th>
                 <th>Volunteer Opportunity</th>
                 <th>Edit</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Myisha Kinberg</td>
-                <td>Organzation, technical, customers service</td>
-                <td>UNF School of Computing Assistant</td>
-                <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button></td>
+                
             </tr>
         </table>
     </div>
@@ -68,12 +62,15 @@
             <div class="modal-body">
                 <form>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Edit Name">
+                        First Name: <input id="firstName" type="text" class="form-control" placeholder="Edit First Name">
                     </div>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Edit Skills">
+                        Last Name: <input id="lastName" type="text" class="form-control" placeholder="Edit Last Name">
                     </div>
                     <div class="input-group">
+                        Enter Skills: <input id="newSkill" type="text" class="form-control" placeholder="Add Skills">
+                    </div>
+                    <div class="input-group" id="selectedOpp">
                         <select>
                             <option>Select Opportunity</option>
                             <option>UNF School of Computing</option>
@@ -85,7 +82,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="editVolunteerModalSaveChanges"type="button" class="btn btn-primary">Save changes</button>
+                <button id="editVolunteerModalSaveChanges" onclick="editSaveChanges()" button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -103,12 +100,15 @@
             <div class="modal-body">
                 <form>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Edit Name">
+                        First Name: <input id="firstName" type="text" class="form-control" placeholder="First Name">
                     </div>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Edit Skills">
+                        Last Name: <input id="lastName" type="text" class="form-control" placeholder="Last Name">
                     </div>
                     <div class="input-group">
+                        Enter Skills: <input id="newSkill" type="text" class="form-control" placeholder="Skills">
+                    </div>
+                    <div class="input-group" id="selectedOpp">
                         <select>
                             <option>Select Opportunity</option>
                             <option>UNF School of Computing</option>
@@ -120,26 +120,39 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="addNewVolunteerSubmit"type="submit" class="btn btn-primary">Save changes</button>
+                <button onclick="saveChanges()" type="submit" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
 </div>
-<script>
+<script type="text/javascript">
+    var volunteerSkills;
+
+    function saveChanges() {
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var skills = document.getElementById("newSkill").value;
+        var selectedOpp = $("#selectedOpp").find(":selected").text();
+        $.ajax({
+            type: "POST",
+            url: "AjaxCallToCreateNewVolunteer?firstName=" + firstName + "&lastName=" + lastName,
+            success: function (response) {
+                $("#manageVolunteersTable").find('tbody')
+                    .append($('<tr>')
+                        .append($('<td>').append(firstName))
+                        .append($('<td>').append(lastName))
+                        .append($('<td>').append(skills))
+                        .append($('<td>').append(selectedOpp))
+                        //.append($('<td>').append('<button data-toggle=modal data-target=#editModal> Edit </button>'))
+                );
+                $("#addNewVolunteerModal").modal('hide');
+            }
+        });
+    }
+
     $('#editModal').on('shown.bs.modal', function () {
     });
 
     $('#addNewVolunteerModal').on('shown.bs.modal', function () {
-    });
-
-    $('#addNewVolunteerSubmit').click(function () {
-        var firstName = document.getElementById("firstName").value;
-        console.log(firstName);
-        $.ajax({
-            url: "Home/AjaxCallToCreateNewVolunteer?firstName=" + firstName,
-            success: function () {
-                $("#manageVolunteersTable").find("<tbody>").append($('<tr>').append($('<td>').attr('innerText', firstName)));
-            }
-        });
     });
 </script>
