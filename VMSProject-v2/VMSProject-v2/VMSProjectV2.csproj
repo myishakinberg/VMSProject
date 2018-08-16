@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="jQuery" Version="3.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
   </ItemGroup>
 
@@ -13,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Home\Contact.cshtml">
+    <Content Update="Views\Home\ContactView.cshtml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
