@@ -59,10 +59,11 @@ namespace VMSProject_v2.Controllers
         }
 
         [HttpPost]
-        public JsonResult AjaxCallToCreateNewVolunteer(string firstName)
+        public JsonResult AjaxCallToCreateNewVolunteer(string firstName, string lastName)
         {
             VolunteerViewModel newVolunteer = new VolunteerViewModel();
             newVolunteer.FName = firstName;
+            newVolunteer.LName = lastName;
             AdminViewModel newAdmin = new AdminViewModel();
             newAdmin.Volunteers.Add(newVolunteer);
             return (Json("Success"));
