@@ -5,20 +5,44 @@
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
-<div align="center">
-    <br />
-    <strong>Welcome to the Volunteer management system!</strong>
-    <br /><br />
-    This site is for Administrators only! As volunteer opportunities are ever-changing and locations <br /> vary by region please contact our
-    volunteer opportunity organizers to find opportunities near you!
-    <br /><br />
-          <a asp-area="" asp-controller="Home" asp-action="Contact">CLICK HERE!</a> to be directed to our central processing center for volunteer opportunities.
-    <br /><br />
-    Admins please log in below!
-    <br />
-    <form asp-controller="Home" asp-action="Index" method="post">
-        Email Address:  <input asp-for="Email" /> <br />
-        Password: <input asp-for="Password" /><br />
-        <button type="submit">Register</button>
-    </form>
+
+<div class="row">
+    <div class="col-md-6">
+        <form class="form-signin">
+            <h4 class="form-signin-heading"><strong>Volunteer Management System</strong></h4>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <br />
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <h2>NOTE:</h2>
+        <h4>This is the administrator sign on. Please click the link below to be directed to standard user sign in.</h4>
+
+        <a href=" ">Standard Sign in</a></p>
+    </div>
 </div>
+
+
+@*<div align="center">
+        <br />
+        <strong>Welcome to the Volunteer management system!</strong>
+        <br /><br />
+        This site is for Administrators only! As volunteer opportunities are ever-changing and locations <br /> vary by region please contact our
+        volunteer opportunity organizers to find opportunities near you!
+        <br /><br />
+              <a asp-area="" asp-controller="Home" asp-action="Contact">CLICK HERE!</a> to be directed to our central processing center for volunteer opportunities.
+        <br /><br />
+        Admins please log in below!
+        <br />
+        <form asp-controller="Home" asp-action="Index" method="post">
+            Email Address:  <input asp-for="Email" /> <br />
+            Password: <input asp-for="Password" /><br />
+            <button type="submit">Register</button>
+        </form>
+    </div>*@
