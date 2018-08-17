@@ -6,27 +6,60 @@
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
+
+<br />
+<br />
 <div class="row">
     <div class="col-md-6">
-        <form class="form-signin">
-            <h4 class="form-signin-heading"><strong>Volunteer Management System</strong></h4>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <br />
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <br />
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
+        <div class="panel panel-primary">
+
+            <!-- Tab names -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">User</a></li>
+                <li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">Admin</a></li>
+            </ul>
+
+            <!-- User Tab -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="1">
+                    <form class="form-signin">
+                        <h4 class="form-signin-heading"><strong>User Login</strong></h4>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <br />
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <br />
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
+
+                <!-- Admin Tab -->
+                <div role="tabpanel" class="tab-pane" id="2">
+                    <form asp-controller="Home" asp-action="Index" method="post" class="form-signin">
+                        <h4 class="form-signin-heading"><strong>Admin Login</strong></h4>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <br />
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <br />
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
     </div>
 
+    <!-- Bug note -->
     <div class="col-md-6">
         <h2>NOTE:</h2>
-        <h4>This is the administrator sign on. Please click the link below to be directed to standard user sign in.</h4>
-
-        <a href=" ">Standard Sign in</a></p>
+        <h4>User will not login, but Admin will. Same code only title is changed... is there something im missing?</h4>
     </div>
 </div>
+
+
 
 
 @*<div align="center">
