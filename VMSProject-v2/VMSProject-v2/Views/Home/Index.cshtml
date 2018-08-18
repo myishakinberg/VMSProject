@@ -1,34 +1,81 @@
-﻿@{
+﻿@model VMSProjectV2.Models.LoginViewModel
+@{
+    Layout = "_Layout";
     ViewData["Title"] = "VMS Admin Login Page";
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
-<div align="center">
-    <br />
-    <strong>Welcome to the Volunteer management system!</strong>
-    <br /><br />
-    This site is for Administrators only! As volunteer opportunities are ever-changing and locations <br /> vary by region please contact our
-    volunteer opportunity organizers to find opportunities near you!
-    <br /><br />
-          <a asp-area="" asp-controller="Home" asp-action="Contact">CLICK HERE!</a> to be directed to our central processing center for volunteer opportunities.
-    <br /><br />
-    Admins please log in below!
-    <br />
-    <table>
-        <tr></tr>
-        <td><strong>Email: </strong></td>
-        <td><input id="Text1" type="text" /></td>
-        </tr>
-        <br />
-        <tr><td><br /></td><td><br /></td></tr>
-        <tr>
-            <td>
-                <strong>Password:</strong>
-            </td>
-            <br />
-            <td><input id="Password1" type="password" /></td>
-        </tr>
-        <tr><td><br /></td><td><br /></td></tr>
-        <tr><td><input id="Submit1" type="submit" value="Login" /></td><td><input id="Reset1" type="reset" value="Cancel" /></td></tr>
-    </table>
+
+
+<br />
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+
+            <!-- Tab names -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">User</a></li>
+                <li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">Admin</a></li>
+            </ul>
+
+            <!-- User Tab -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="1">
+                    <form class="form-signin">
+                        <h4 class="form-signin-heading"><strong>User Login</strong></h4>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <br />
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <br />
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
+
+                <!-- Admin Tab -->
+                <div role="tabpanel" class="tab-pane" id="2">
+                    <form asp-controller="Home" asp-action="Index" method="post" class="form-signin">
+                        <h4 class="form-signin-heading"><strong>Admin Login</strong></h4>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <br />
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <br />
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bug note -->
+    <div class="col-md-6">
+        <h2>NOTE:</h2>
+        <h4>User will not login, but Admin will. Same code only title is changed... is there something im missing?</h4>
+    </div>
 </div>
+
+
+
+
+@*<div align="center">
+        <br />
+        <strong>Welcome to the Volunteer management system!</strong>
+        <br /><br />
+        This site is for Administrators only! As volunteer opportunities are ever-changing and locations <br /> vary by region please contact our
+        volunteer opportunity organizers to find opportunities near you!
+        <br /><br />
+              <a asp-area="" asp-controller="Home" asp-action="Contact">CLICK HERE!</a> to be directed to our central processing center for volunteer opportunities.
+        <br /><br />
+        Admins please log in below!
+        <br />
+        <form asp-controller="Home" asp-action="Index" method="post">
+            Email Address:  <input asp-for="Email" /> <br />
+            Password: <input asp-for="Password" /><br />
+            <button type="submit">Register</button>
+        </form>
+    </div>*@

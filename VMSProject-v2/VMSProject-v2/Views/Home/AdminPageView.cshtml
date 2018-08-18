@@ -1,0 +1,14 @@
+﻿@model VMSProjectV2.Models.AdminViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "VMS Data";
+}
+
+<div class="container" style="margin:250px;">
+    <div class="col-lg-4">
+        <a id="adminOptions" asp-controller="Home" asp-action="ManageVolunteersView">Manage Volunteers</a>
+    </div>   
+    <div class="col-lg-4">
+        <a id="adminOptions" asp-controller="Home" asp-action="ManageOpportunitiesView">Manage Opportunities</a>
+    </div>
+</div>
