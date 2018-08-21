@@ -41,7 +41,8 @@ namespace VMSProject_v2.Controllers
         }
         public IActionResult AddNewVolunteer()
         {
-            return View();
+            AddNewVolunteerModel newVolunteer = new AddNewVolunteerModel();
+            return View(newVolunteer);
         }
         public IActionResult ContactView()
         {

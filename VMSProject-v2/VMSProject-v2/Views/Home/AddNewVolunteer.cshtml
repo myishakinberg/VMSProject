@@ -7,7 +7,53 @@
     <h2>Add New Volunteer</h2>
     <form>
         <div class="input-group">
-            <input id="firstName" type="text" class="form-control" placeholder="Edit First Name">
+            <input asp-for="FirstName" class="form-control" placeholder="First Name" required autofocus>
         </div>
+        <br />
+        <div class="input-group">
+            <input asp-for="LastName" class="form-control" placeholder="Last Name" required autofocus>
+        </div>   
+        <br />
+        <div class="input-group">
+            <input asp-for="Username" class="form-control" placeholder="Username" required autofocus>
+        </div>   
+        <br />
+        <div class="input-group">
+            <input asp-for="Password" class="form-control" placeholder="Password" required autofocus>
+        </div>      
+        <br />
+        <div class="input-group">
+            <select>
+                <option>Select Center</option>
+                @for (int i = 0; i < Model.Centers.Count; i++)
+                {
+                <option value="@Model.Centers[i]">@Model.Centers[i]</option>
+
+                }
+            </select>
+        </div>   
+        <br />
+        <div class="input-group">
+            <div class="input-group">
+                <label class="label">Select Skills</label>
+                @for (int i = 0; i < Model.Skills.Count; i++)
+                {
+                    <br />
+                    <input type="checkbox" value="@Model.Skills[i]" class="custom-control-input">
+                    <span class="custom-control-description">@Model.Skills[i]</span>
+                }
+            </div>
+        </div>   
+        <br />
+        <div class="input-group">
+            <label class="label">Select Availability</label>
+            @for (int i = 0; i < Model.AvailabilityDays.Count; i++)
+            {
+                <br />
+                <input type="checkbox" value ="@Model.AvailabilityDays[i]" class="custom-control-input">
+                <span class="custom-control-description">@Model.AvailabilityDays[i]</span>
+            }
+        </div>
+
     </form>
 </div>
