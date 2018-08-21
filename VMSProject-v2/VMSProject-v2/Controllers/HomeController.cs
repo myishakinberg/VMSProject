@@ -20,29 +20,26 @@ namespace VMSProject_v2.Controllers
         {
             if(login.Email != null && login.Password != null)
             {
-                return RedirectToAction("AdminPageView");
+                AdminViewModel newAdmin = new AdminViewModel();
+                newAdmin.Email = login.Email;
+                return RedirectToAction("AdminPageView", newAdmin);
             }
 
             return View();
         }
-        public IActionResult AdminPageView()
+        public IActionResult AdminPageView(AdminViewModel admin)
         {
-            AdminViewModel newAdmin = new AdminViewModel();
-            return View(newAdmin);
+            return View(admin);
         }
         public IActionResult ManageVolunteersView()
         {
-            VolunteerViewModel newVolunteer = new VolunteerViewModel();
-            newVolunteer.FName = "Myisha";
-            newVolunteer.LName = "Kinberg";
-            newVolunteer.Skills.Add("Organization");
-            newVolunteer.Skills.Add("Planning");
-            newVolunteer.Skills.Add("Technology");
-            newVolunteer.VolunteerOpp = "UNF School of Computing";
-
             return View();
         }
         public IActionResult ManageOpportunitiesView()
+        {
+            return View();
+        }
+        public IActionResult AddNewVolunteer()
         {
             return View();
         }

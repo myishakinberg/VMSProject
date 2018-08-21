@@ -34,8 +34,13 @@
     }
 }
 
-#adminOptions{
-    border:solid !important;
-    padding:10px;
-    font-size:16px;
+#adminOptions {
+    border: solid !important;
+    padding: 10px;
+    font-size: 16px;
+}
+#adminOps {
+    margin-top: 40px;
+    margin-left: 250px;
+    margin-right: 250px;
 }
