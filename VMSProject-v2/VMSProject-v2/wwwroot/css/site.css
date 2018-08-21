@@ -45,5 +45,9 @@
     margin-right: 250px;
 }
 .label {
-    font-size: 15px;
+    font-size: 18px;
+    color:black;
+    text-align:left;
+    font-weight:400;
+    margin-left: -20px !important;
 }

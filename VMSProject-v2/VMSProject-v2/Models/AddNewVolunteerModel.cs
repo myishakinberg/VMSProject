@@ -19,14 +19,14 @@ namespace VMSProjectV2.Models
         public string City { get; set; }
         public string State { get; set; }
         public int Zip { get; set; }
-        public List<int> HomePhone = new List<int>(3);
-        public List<int> CellPhone = new List<int>(3);
-        public List<int> WorkPhone = new List<int>(3);
-        public int Email { get; set; }
+        public int HomePhone { get; set; }
+        public int CellPhone { get; set; }
+        public int WorkPhone { get; set; }
+        public string Email { get; set; }
         public List<string> Education = new List<string>();
         public List<string> Licenses = new List<string>();
-        public bool DriversLicence { get; set; }
-        public bool SSN { get; set; }
+        public bool DriversLicence { get; set; } 
+        public bool SSN { get; set; } 
         public List<string> ApprovalStatus = new List<string>();
 
         public string EmergencyName { get; set; }
@@ -34,8 +34,8 @@ namespace VMSProjectV2.Models
         public string EmergencyCity { get; set; }
         public string EmergencyState { get; set; }
         public int EmergencyZip { get; set; }
-        public List<int> EmergencyHomePhone = new List<int>(3);
-        public List<int> EmergencyWorkPhone = new List<int>(3);
+        public int EmergencyHomePhone { get; set; }
+        public int EmergencyWorkPhone { get; set; }
         public int EmergencyEmail { get; set; }
 
         public AddNewVolunteerModel()
@@ -76,11 +76,14 @@ namespace VMSProjectV2.Models
             Licenses.Add("Certified Financial Planner");
             Licenses.Add("Certified Public Accountant");
             Licenses.Add("Financial Risk Manager");
+            Licenses.Add("Other");
+            Licenses.Add("None");
 
             ApprovalStatus.Add("Approved");
             ApprovalStatus.Add("Pending Approval");
             ApprovalStatus.Add("Disapproved");
             ApprovalStatus.Add("Inactive");
+
         }
     }
 }
