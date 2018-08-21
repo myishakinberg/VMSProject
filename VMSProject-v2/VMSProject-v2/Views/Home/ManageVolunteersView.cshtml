@@ -5,9 +5,11 @@
     ViewData["Title"] = "VMS Data";
 }
 @{
-//var db = Database.Open("VMS");
-//var query = "SELECT * FROM Product";
-//Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    //var db = Database.Open("VMS");
+    //var query = "SELECT * FROM Product";
+    //Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+
 }
 <h3>@ViewData["Message"]</h3>
 
@@ -26,60 +28,60 @@
     <br />
     <div class="col-md-12">
         <table id="manageVolunteersTable" class="table table-bordered">
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Skills</th>
-                <th>Volunteer Opportunity</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Skills</th>
+                    <th>Volunteer Opportunity</th>
+                </tr>
+            </thead>
         </table>
     </div>
-
 </div>
 
 
-    
 
 
 
 @*<div class="container" onload="myFunction()">
-    <div class="col-sm-4">
-        <table class="table table-bordered">
-            <tr>
-                <th>
-                    Please Select Action
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addNewVolunteerModal">Add New Volunteer</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addNewVolunteerModal">Search Volunteers</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addNewVolunteerModal">Change Volunteer Filter</button>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-md-8">
-        <table id="manageVolunteersTable"class="table table-bordered">
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Skills</th>
-                <th>Volunteer Opportunity</th>
-                <th>Edit</th>
-                
-            </tr>
-        </table>
-    </div>
-</div>*@
+        <div class="col-sm-4">
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        Please Select Action
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addNewVolunteerModal">Add New Volunteer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addNewVolunteerModal">Search Volunteers</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addNewVolunteerModal">Change Volunteer Filter</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-8">
+            <table id="manageVolunteersTable"class="table table-bordered">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Skills</th>
+                    <th>Volunteer Opportunity</th>
+                    <th>Edit</th>
+
+                </tr>
+            </table>
+        </div>
+    </div>*@
 <!-- Edit Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -100,7 +102,7 @@
                     </div>
                     <div class="input-group">
                         <input id="newSkill" type="text" class="form-control" placeholder="Add Skills">
-                    </div>             
+                    </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <select>
                             <option>Select Opportunity</option>
@@ -139,7 +141,7 @@
                     <div class="form-group">
                         <input id="newSkill" type="text" class="form-control" placeholder="Skills">
                     </div>
-                    <div class="input-group" id="selectedOpp">                    
+                    <div class="input-group" id="selectedOpp">
                         <select>
                             <option>Select Opportunity</option>
                             <option>UNF School of Computing</option>
@@ -177,7 +179,7 @@
                         .append($('<td>').append(skills))
                         .append($('<td>').append(selectedOpp))
                         //.append($('<td>').append('<button data-toggle=modal data-target=#editModal> Edit </button>'))
-                );
+                    );
                 $("#addNewVolunteerModal").modal('hide');
             }
         });
