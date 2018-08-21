@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VMSProjectV2.Models;
 
@@ -10,6 +11,8 @@ namespace VMSProject_v2.Controllers
 {
     public class HomeController : Controller
     {
+        public AdminViewModel CurrentAdmin = new AdminViewModel();
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -20,31 +23,40 @@ namespace VMSProject_v2.Controllers
         {
             if(login.Email != null && login.Password != null)
             {
-                return RedirectToAction("AdminPageView");
+                AdminViewModel admin = new AdminViewModel();
+                admin.Email = login.Email;
+
+                return RedirectToAction("AdminPageView", admin);
             }
 
             return View();
         }
-        public IActionResult AdminPageView()
+        public IActionResult AdminPageView(AdminViewModel admin)
         {
-            AdminViewModel newAdmin = new AdminViewModel();
-            return View(newAdmin);
+            return View(admin);
         }
-        public IActionResult ManageVolunteersView()
+        public IActionResult ManageVolunteersView(AdminViewModel admin)
         {
-            VolunteerViewModel newVolunteer = new VolunteerViewModel();
-            newVolunteer.FName = "Myisha";
-            newVolunteer.LName = "Kinberg";
-            newVolunteer.Skills.Add("Organization");
-            newVolunteer.Skills.Add("Planning");
-            newVolunteer.Skills.Add("Technology");
-            newVolunteer.VolunteerOpp = "UNF School of Computing";
+            return View(admin);
+        }
 
-            return View();
-        }
         public IActionResult ManageOpportunitiesView()
         {
             return View();
+        }
+        [HttpGet]
+        public IActionResult AddNewVolunteer()
+        {
+            VolunteerViewModel newVolunteer = new VolunteerViewModel();
+            return View(newVolunteer);
+        }
+        [HttpPost]
+        public IActionResult AddNewVolunteer(VolunteerViewModel newVolunteer)
+        {
+                AdminViewModel admin = new AdminViewModel();
+                admin.Volunteers.Add(newVolunteer);
+                return RedirectToAction("Index");
+            
         }
         public IActionResult ContactView()
         {
@@ -61,11 +73,6 @@ namespace VMSProject_v2.Controllers
         [HttpPost]
         public JsonResult AjaxCallToCreateNewVolunteer(string firstName, string lastName)
         {
-            VolunteerViewModel newVolunteer = new VolunteerViewModel();
-            newVolunteer.FName = firstName;
-            newVolunteer.LName = lastName;
-            AdminViewModel newAdmin = new AdminViewModel();
-            newAdmin.Volunteers.Add(newVolunteer);
             return (Json("Success"));
         }
     }

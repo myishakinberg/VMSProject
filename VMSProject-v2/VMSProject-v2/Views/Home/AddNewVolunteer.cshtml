@@ -1,0 +1,203 @@
+﻿@model VolunteerViewModel
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="container body-content">
+    <h2>Add New Volunteer</h2>
+    <form>
+        <br />
+        <label class="label">First Name:</label>
+        <div class="input-group">
+            <input asp-for="FirstName" class="form-control" placeholder="First Name" text="First" required autofocus>
+        </div>
+        <br />
+        <label class="label">Last Name:</label>
+        <div class="input-group">
+            <input asp-for="LastName" class="form-control" placeholder="Last Name" required autofocus>
+        </div>
+        <br />
+        <label class="label">Username:</label>
+        <div class="input-group">
+            <input asp-for="Username" class="form-control" placeholder="Username" required autofocus>
+        </div>
+        <br />
+        <label class="label">Password:</label>
+        <div class="input-group">
+            <input asp-for="Password" class="form-control" placeholder="Password" required autofocus>
+        </div>
+        <br />
+        <label class="label">Centers Where Volunteer Prefers to Work:</label>
+        <br />
+        <div class="input-group">
+            <select>
+                <option>Select Center</option>
+                @for (int i = 0; i < Model.Centers.Count; i++)
+                {
+                    <option value="@Model.Centers[i]">@Model.Centers[i]</option>
+
+                }
+            </select>
+        </div>
+        <br />
+        <label class="label">Skills/Interests:</label>
+        <div class="input-group">
+            @for (int i = 0; i < Model.Skills.Count; i++)
+            {
+                <br />
+                <input type="checkbox" value="@Model.Skills[i]" class="custom-control-input">
+                <span class="custom-control-description">@Model.Skills[i]</span>
+            }
+        </div>
+        <br />
+        <div class="input-group">
+            <label class="label">Select Days Volunteer Is Available:</label>
+            <br />
+            @for (int i = 0; i < Model.AvailabilityDays.Count; i++)
+            {
+                <br />
+                <input type="checkbox" value="@Model.AvailabilityDays[i]" class="custom-control-input">
+                <span class="custom-control-description">@Model.AvailabilityDays[i]</span>
+            }
+        </div>
+        <br />
+        <label class="label">Select Shifts Volunteer Is Available:</label>
+        <br />
+        <div class="input-group">
+            @for (int i = 0; i < Model.AvailabilityTimes.Count; i++)
+            {
+                <br />
+                <input type="checkbox" value="@Model.AvailabilityTimes[i]" class="custom-control-input">
+                <span class="custom-control-description">@Model.AvailabilityTimes[i]</span>
+            }
+        </div>
+        <br />
+        <label class="label">Physical Address:</label>
+        <div class="input-group">
+            <input asp-for="Address" class="form-control" placeholder="Address" required autofocus>
+        </div>
+        <br />
+        <label class="label">City:</label>
+        <div class="input-group">
+            <input asp-for="City" class="form-control" placeholder="City" required autofocus>
+        </div>
+        <br />
+        <label class="label">State:</label>
+        <div class="input-group">
+            <input asp-for="State" class="form-control" placeholder="State" required autofocus>
+        </div>
+        <br />
+        <label class="label">Zip Code:</label>
+        <div class="input-group">
+            <input asp-for="Zip" class="form-control" placeholder="Zip" required autofocus>
+        </div>
+        <br />
+        <label class="label">Home Phone:</label>
+        <div class="input-group">
+            <input asp-for="HomePhone" class="form-control" placeholder="Home Phone" required autofocus>
+        </div>
+        <br />
+        <label class="label">Work Phone (optional):</label>
+        <div class="input-group">
+            <input asp-for="WorkPhone" class="form-control" placeholder="Work Phone" autofocus>
+        </div>
+        <br />
+        <label class="label">Cell Phone (optional):</label>
+        <div class="input-group">
+            <input asp-for="CellPhone" class="form-control" placeholder="Cell Phone" autofocus>
+        </div>
+        <br />
+        <label class="label">Email Address:</label>
+        <div class="input-group">
+            <input asp-for="Email" class="form-control" placeholder="Email" required autofocus>
+        </div>
+        <br />
+        <label class="label">Educational Background:</label>
+        <br />
+        <div class="input-group">
+            <select>
+                <option>Select Education Level</option>
+                @for (int i = 0; i < Model.Education.Count; i++)
+                {
+                    <option value="@Model.Education[i]">@Model.Education[i]</option>
+
+                }
+            </select>
+        </div>
+        <br />
+        <label class="label">Current Licenses Volunteer Holds:</label>
+        <br />
+        <div class="input-group">
+            @for (int i = 0; i < Model.Licenses.Count; i++)
+            {
+                <br />
+                <input type="checkbox" value="@Model.Licenses[i]" class="custom-control-input">
+                <span class="custom-control-description">@Model.Licenses[i]</span>
+            }
+        </div>
+        <br />
+        <label class="label" style="color:red">Please Enter Emergency Contact Information</label>
+        <br />
+        <br />
+        <label class="label">Emergency Contact Name:</label>
+        <div class="input-group">
+            <input asp-for="EmergencyName" class="form-control" placeholder="Emergency Contact Name" required autofocus>
+        </div>
+        <br />
+        <label class="label">Emergency Contact Home Phone:</label>
+        <div class="input-group">
+            <input asp-for="EmergencyHomePhone" class="form-control" placeholder="Emergency Contact Home Phone" required autofocus>
+        </div>
+        <br />
+        <label class="label">Emergency Contact Work Phone (optional):</label>
+        <div class="input-group">
+            <input asp-for="EmergencyWorkPhone" class="form-control" placeholder="Emergency Contact Work Phone" autofocus>
+        </div>
+        <br />
+        <label class="label">Emergency Contact Email Address:</label>
+        <div class="input-group">
+            <input asp-for="EmergencyEmail" class="form-control" placeholder="Emergency Contact Email" required autofocus>
+        </div>
+        <br />
+        <label class="label">Emergency Contact Physical Address:</label>
+        <div class="input-group">
+            <input asp-for="EmergencyAddress" class="form-control" placeholder="Emergency Contact Address" autofocus>
+        </div>
+        <br />
+        <label class="label">Emergency Contact State:</label>
+        <div class="input-group">
+            <input asp-for="EmergencyState" class="form-control" placeholder="Emergency Contact State" autofocus>
+        </div>
+        <br />
+        <label class="label">Emergency Contact City:</label>
+        <div class="input-group">
+            <input asp-for="EmergencyCity" class="form-control" placeholder="Emergency Contact City" required autofocus>
+        </div>
+        <br />
+        <label class="label">Emergency Contact Zip Code:</label>
+        <div class="input-group">
+            <input asp-for="EmergencyZip" class="form-control" placeholder="Emergency Contact Zip Code" autofocus>
+        </div>
+        <br />
+        <label class="label">Driver's License On File?</label>
+        <div class="input-group">
+            <div class="radio">
+                <label><input asp-for="DriversLicence" value="true" type="radio" name="optradio">True</label>
+            </div>
+            <div class="radio">
+                <label><input asp-for="DriversLicence" value="false" type="radio" name="optradio">False</label>
+            </div>
+        </div>
+        <br />
+        @*<label class="label">Social SecruityCard On File?</label>
+        <div class="input-group">
+            <div class="radio">
+                <label><input asp-for="SSN" value="true" type="radio" name="optradio">True</label>
+            </div>
+            <div class="radio">
+                <label><input asp-for="SSN" value="false" type="radio" name="optradio">False</label>
+            </div>
+        </div>*@
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create New Volunteer</button>
+    </form>
+</div>
