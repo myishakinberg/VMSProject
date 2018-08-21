@@ -11,7 +11,7 @@ namespace VMSProject_v2.Controllers
 {
     public class HomeController : Controller
     {
-        public AdminViewModel CurrentAdmin = new AdminViewModel();
+        AdminViewModel CurrentAdmin = new AdminViewModel();
 
         [HttpGet]
         public IActionResult Index()
@@ -24,40 +24,59 @@ namespace VMSProject_v2.Controllers
             if(login.Email != null && login.Password != null)
             {
                 AdminViewModel admin = new AdminViewModel();
-                admin.Email = login.Email;
+                CurrentAdmin.Email = login.Email;
 
-                return RedirectToAction("AdminPageView", admin);
+                return RedirectToAction("AdminPageView", CurrentAdmin);
             }
 
             return View();
         }
-        public IActionResult AdminPageView(AdminViewModel admin)
+        public IActionResult AdminPageView()
         {
-            return View(admin);
+            return View(CurrentAdmin);
         }
-        public IActionResult ManageVolunteersView(AdminViewModel admin)
+        public IActionResult ManageVolunteersView()
         {
-            return View(admin);
-        }
+            AdminViewModel admin = new AdminViewModel();
 
+            if (TempData["NewVol"] != null)
+            {
+                admin = (AdminViewModel)TempData["NewVol"];
+                return View(admin);
+            }
+            return View(admin);
+        }
         public IActionResult ManageOpportunitiesView()
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult AddNewVolunteer()
+        public IActionResult AddNewVolunteer(VolunteerViewModel vol)
         {
-            VolunteerViewModel newVolunteer = new VolunteerViewModel();
-            return View(newVolunteer);
+
+            if (vol.FirstName == null)
+            {
+                VolunteerViewModel newVolunteer = new VolunteerViewModel();
+                return View(newVolunteer);
+            }
+            else
+            {
+                AdminViewModel admin = new AdminViewModel();
+                CurrentAdmin.Volunteers.Add(vol);
+                admin.Volunteers.Add(vol);
+
+                TempData["NewVol"] = vol;
+                return View("ManageVolunteersView");
+            }
+
         }
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult AddNewVolunteer(VolunteerViewModel newVolunteer)
         {
                 AdminViewModel admin = new AdminViewModel();
                 admin.Volunteers.Add(newVolunteer);
                 return RedirectToAction("Index");
             
-        }
+        }*/
         public IActionResult ContactView()
         {
             ViewData["Message"] = "Use the information below to contact one of our Volunteer Opportunity specialists!";
