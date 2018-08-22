@@ -12,8 +12,10 @@ namespace VMSProjectV2.Models
 
         public AdminViewModel()
         {
-            Volunteers firstVol = new Volunteers();
-            Volunteers.Add(firstVol.Myisha);
+            Volunteers volunteers = new Volunteers();
+            Volunteers.Add(volunteers.Myisha);
+            Volunteers.Add(volunteers.Sam);
+            Volunteers.Add(volunteers.Jack);
         }
     }
 }
