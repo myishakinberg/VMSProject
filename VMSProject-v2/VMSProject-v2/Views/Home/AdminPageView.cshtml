@@ -1,19 +1,18 @@
 ﻿@model VMSProjectV2.Models.AdminViewModel
-@{    
+@{
     ViewData["Title"] = "VMS Data";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<h1 style="margin-left:50px">Welcome back @Model.Email</h1>
 
-<div class="container body-content">
-    <h2>NOTE:</h2>
-    <h4>There is no data to populate here. Please click the menu button in top left to navigate admin features</h4>
+<div id="adminOps"class="container body-content">
 </div>
-    @*<div class="container" style="margin:250px;">
-        <div class="col-lg-4">
-            <a id="adminOptions" asp-controller="Home" asp-action="ManageVolunteersView">Manage Volunteers</a>
-        </div>
-        <div class="col-lg-4">
-            <a id="adminOptions" asp-controller="Home" asp-action="ManageOpportunitiesView">Manage Opportunities</a>
-        </div>
-    </div>*@
+<div class="container">
+    <div class="col-lg-4">
+        <a id="adminOptions" asp-controller="Home" asp-action="ManageVolunteersView">Manage Volunteers</a>
+    </div>
+    <div class="col-lg-4">
+        <a id="adminOptions" asp-controller="Home" asp-action="ManageOpportunitiesView">Manage Opportunities</a>
+    </div>
+</div>
 
