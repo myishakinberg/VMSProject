@@ -19,9 +19,9 @@ namespace VMSProjectV2.Models
         public string City { get; set; }
         public string State { get; set; }
         public int Zip { get; set; }
-        public int HomePhone { get; set; }
-        public int CellPhone { get; set; }
-        public int WorkPhone { get; set; }
+        public long HomePhone { get; set; }
+        public long CellPhone { get; set; }
+        public long WorkPhone { get; set; }
         public string Email { get; set; }
         public List<string> Education = new List<string>();
         public List<string> Licenses = new List<string>();
@@ -34,8 +34,8 @@ namespace VMSProjectV2.Models
         public string EmergencyCity { get; set; }
         public string EmergencyState { get; set; }
         public int EmergencyZip { get; set; }
-        public int EmergencyHomePhone { get; set; }
-        public int EmergencyWorkPhone { get; set; }
+        public long EmergencyHomePhone { get; set; }
+        public long EmergencyWorkPhone { get; set; }
         public string EmergencyEmail { get; set; }
 
         public VolunteerViewModel()
