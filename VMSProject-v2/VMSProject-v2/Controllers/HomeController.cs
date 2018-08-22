@@ -24,16 +24,16 @@ namespace VMSProject_v2.Controllers
             if(login.Email != null && login.Password != null)
             {
                 AdminViewModel admin = new AdminViewModel();
-                CurrentAdmin.Email = login.Email;
+                admin.Email = login.Email;
 
-                return RedirectToAction("AdminPageView", CurrentAdmin);
+                return RedirectToAction("AdminPageView", admin);
             }
 
             return View();
         }
-        public IActionResult AdminPageView()
+        public IActionResult AdminPageView(AdminViewModel admin)
         {
-            return View(CurrentAdmin);
+            return View(admin);
         }
         public IActionResult ManageVolunteersView()
         {
